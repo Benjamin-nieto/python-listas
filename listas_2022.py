@@ -323,25 +323,20 @@ class ListaSimple:
                 nodoActual =  nodoActual.siguiente
         return elementosConsecutivos
     
-    #invertir una lista (incompleto)
-    def ontenerListaInvertida(self, lista):
+#obtener  lista invetida
+    def obtenerListaInvertida(self):
         elementos = []
         dato = self.nodoInicial.dato
         nodoActual = None
         nodoPrevio = None
+        contador = self.longitud()-1
         if self.estaVacia() :
             return None
         else :
-            while nodoActual != None :
-                nodoActual = self.nodoInicial.siguiente
-                self.nodoInicial.siguiente = nodoPrevio
-                nodoPrevio = self.nodoInicial
-                self.nodoInicial = nodoActual
+            while contador >= 0 :
+               elementos.append(self.buscarPosicion(contador))
+               contador = contador - 1
         return elementos
-
-
-
-
 
 
 
