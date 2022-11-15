@@ -316,12 +316,9 @@ class ListaSimple:
                 nodoActual = nodoActual.siguiente      
         return sorted(list(set(elementosConsecutivos)))
     
-#obtener  lista invetida
+    #obtener  lista invetida
     def obtenerListaInvertida(self):
         elementos = []
-        dato = self.nodoInicial.dato
-        nodoActual = None
-        nodoPrevio = None
         contador = self.longitud()-1
         if self.estaVacia() :
             return None
@@ -368,6 +365,10 @@ class ListaSimple:
         contador = self.longitud()
       
              
+
+
+
+
 
             
                 
