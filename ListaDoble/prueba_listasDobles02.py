@@ -1,4 +1,4 @@
-from listas_2022 import *
+from Listasimple.listas_2022 import *
 
 lista_02 = ListaSimple()
 lista_02.adicionarAlInicio(10)

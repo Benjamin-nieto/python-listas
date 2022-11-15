@@ -1,0 +1,25 @@
+from Listas.listas_2022 import ListaSimple
+from MetodoExternosListaSimple import Metodos
+lista_01 = ListaSimple()
+lista_01.adicionarAlInicio(50)
+lista_01.adicionarAlInicio(9)
+lista_01.adicionarAlInicio(10)
+lista_01.adicionarAlInicio(200)
+lista_01.adicionarAlInicio(15)
+
+lista_02 = ListaSimple()
+lista_02.adicionarAlInicio(50)
+lista_02.adicionarAlInicio(9)
+lista_02.adicionarAlInicio(10)
+lista_02.adicionarAlInicio(200)
+lista_02.adicionarAlInicio(15)
+print("Lista:",lista_01)
+print("Metodo 01:",Metodos.mayorValorEntero("casa"))
+print("Metodo 02:",Metodos.mayorValorEntero(ListaSimple()))
+print("Metodo 03:",Metodos.mayorValorEntero(lista_01))
+print("Metodo 04:",Metodos.multiplicacionNumeros(lista_01))
+print("Metodo 05:",Metodos.NumerosPares(lista_01))
+print("Metodo 06:",Metodos.NumerosImpares(lista_01))
+#print("Metodo 07:",Metodos.buscarSimilareDeDosListas(lista_01, lista_02))
+print("Metodo 08:",Metodos.esSimilar(lista_01, lista_02))
+

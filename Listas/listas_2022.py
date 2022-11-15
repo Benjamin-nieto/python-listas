@@ -134,7 +134,7 @@ class ListaSimple:
             return None
         return nodoActual.dato
     
-    #Buscar Ultimo Elemento
+    #Buscar Ultimo Elemento(Daniela)
     def buscarUltimoElemento(self):
         if self.estaVacia():
             return None
@@ -144,7 +144,7 @@ class ListaSimple:
                 NodoActual = NodoActual.siguiente
             return NodoActual.dato
     
-    #buscar penultimo elemento -hecho por daniela
+    #buscar penultimo elemento (hecho por daniela)
     def buscarPenultimoElemento(self):
         if self.estaVacia():
             return None
@@ -156,7 +156,7 @@ class ListaSimple:
                 nodoActual = nodoActual.siguiente
             return nodoPrevio.dato
 
-    #Eliminar penultimo elemento 
+    #Eliminar penultimo elemento (made by daniela)
     def EliminarPenultimo(self):
         if self.estaVacia():
             raise Exception("Lista vacia no hay elementos para eliminar!")
@@ -184,7 +184,7 @@ class ListaSimple:
             nodoPrevio.siguiente = nodoActual.siguiente
         return True
     
-    #eliminar apariciones de un dato 
+    #eliminar apariciones de un dato (los borra todos no deja ni uno)
     def eliminarAparicionesDeUnDato(self, datoAeliminar):
         if self.estaVacia() :
             return False
@@ -231,7 +231,7 @@ class ListaSimple:
             nodoActual = nodoActual.siguiente
         return contador
 
-    #mover elemento de una posicion inicial a una final
+    #mover elemento dado en( posicion inicial) a una posicion final dada por el usuario
     def moverElemento(self, posInicial, posFinal):
         ##posiciones menores a 0
         if (posInicial < 0 or posFinal < 0):
@@ -299,48 +299,72 @@ class ListaSimple:
     #Indicar las posiciones en las que aparece en forma consecutiva
     #un dato indicado por el usuario en la lista enlazada.(probar varios casos)
     # sin terminar no funciona.
+    
     def buscarPosicionDatoConsecutivos(self, datoAbuscar):
         elementosConsecutivos = []
         nodoActual = self.nodoInicial
-        nodoPrevio = self.nodoInicial
-        temporal = None
         contador = 0
         if self.estaVacia() :
             return None
         else :
             while nodoActual != None :
-                temporal = nodoPrevio
-                nodoPrevio = nodoActual
-                if (nodoPrevio.dato == datoAbuscar and nodoActual.dato == datoAbuscar):
+                if (nodoActual.dato == datoAbuscar and (nodoActual.siguiente != None and nodoActual.siguiente.dato == datoAbuscar)):
+                    
                     elementosConsecutivos.append(contador)
-                    contador = contador + 1
-                if (temporal.dato == datoAbuscar and nodoPrevio.dato == datoAbuscar):
-                    elementosConsecutivos.append(contador)
-                    contador = contador + 1
-                else :
-                    contador = contador + 1
-                nodoPrevio = nodoActual
-                nodoActual =  nodoActual.siguiente
-        return elementosConsecutivos
+                    elementosConsecutivos.append(contador+1)
+                contador = contador + 1
+                nodoActual = nodoActual.siguiente      
+        return sorted(list(set(elementosConsecutivos)))
     
-    #invertir una lista (incompleto)
-    def ontenerListaInvertida(self, lista):
+    #obtener  lista invetida
+    def obtenerListaInvertida(self):
         elementos = []
-        dato = self.nodoInicial.dato
-        nodoActual = None
-        nodoPrevio = None
+        contador = self.longitud()-1
         if self.estaVacia() :
             return None
         else :
-            while nodoActual != None :
-                nodoActual = self.nodoInicial.siguiente
-                self.nodoInicial.siguiente = nodoPrevio
-                nodoPrevio = self.nodoInicial
-                self.nodoInicial = nodoActual
+            while contador >= 0 :
+               elementos.append(self.buscarPosicion(contador))
+               contador = contador - 1
         return elementos
 
+ #ordenamiento ascendente de nodos de una lista simple, solo funciona con un tipo de dato
+ #capturar excepcion si la lista tiene diferentes tipos de datos
+    def ordenAscendenteLista(self):
+        contador = self.longitud()
+        while contador > 0:
+            nodoPrevio = self.nodoInicial
+            nodoActual = self.nodoInicial
+            contador = 0
+            for i in range(self.longitud()-1):
+                nodoPrevio = nodoActual
+                nodoActual = nodoActual.siguiente
+                if nodoPrevio.dato > nodoActual.dato :
+                    #intercambio de datos
+                    self.moverElemento(i, i+1)
+                    contador = contador + 1
+ 
+ #Metodo que determina que tipo de dato hay en cada posicion de la lista
+    def TiposDeDatosLista(self):
+        TipoDatos = []
+        if self.estaVacia():
+            return None
+        else:
+            nodoActual = self.nodoInicial
+            while nodoActual != None:
+                TipoDatos.append(type(nodoActual.dato))
+                nodoActual = nodoActual.siguiente
+            return TipoDatos
+
+ #eliminar la o las repeticiones de un dato (dejando solo uno)
+ # #ejemplo si ya [1,2,2,2,4] al eliminar deberia quedar asi [1,2,4], utilizar method buscarPosicionesDato.
 
 
+ #Intercambio dos elementos de una lista enlazada (segun sus valores)
+    def intercambioDosElementos(self, primerElemento, segundoElemento):
+        contador = self.longitud()
+      
+             
 
 
 
